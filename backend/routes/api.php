@@ -1,16 +1,18 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
 
+Route::prefix("v1")->group(function () {
 
-Route::get('/v1/ping', function () {
-    return response()->json([
-        "status" => "ok",
-        "message" => "pong"
-    ]);
+    Route::get(
+        '/ping',
+        fn() => response()->json([
+            "status" => "ok",
+            "message" => "pong"
+        ])
+    );
+
+    require app_path("Modules/Catalog/Routes/api.php");
+
 });
