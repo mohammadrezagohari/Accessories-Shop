@@ -2,17 +2,17 @@
 
 namespace App\Modules\Catalog\Application\Queries;
 
-use App\Modules\Catalog\Domain\Enums\ProductStatus;
-use App\Modules\Catalog\Infrastructure\Persistence\Models\Product;
+use App\Modules\Catalog\Application\Queries\Contracts\ProductReadRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 final class ListPublishedProducts
 {
+    public function __construct(private readonly ProductReadRepository $products)
+    {
+    }
+
     public function handle(): LengthAwarePaginator
     {
-        return Product::query()
-            ->where('status', ProductStatus::Published->value)
-            ->OrderByDesc('id')
-            ->paginate(10);
+        return $this->products->paginatePublished(10);
     }
 
 }

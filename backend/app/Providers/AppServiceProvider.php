@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Modules\Catalog\Application\Queries\Contracts\ProductReadRepository;
+use App\Modules\Catalog\Infrastructure\Persistence\Repositories\EloquentProductReadRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +13,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            ProductReadRepository::class,
+            EloquentProductReadRepository::class
+        );
     }
 
     /**
