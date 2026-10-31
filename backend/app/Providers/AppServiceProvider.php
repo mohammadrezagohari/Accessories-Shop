@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Modules\Catalog\Application\Queries\Contracts\ProductReadRepository;
+use App\Modules\Catalog\Application\Contracts\ProductReadRepository;
 use App\Modules\Catalog\Infrastructure\Persistence\Repositories\EloquentProductReadRepository;
 use Illuminate\Support\ServiceProvider;
 

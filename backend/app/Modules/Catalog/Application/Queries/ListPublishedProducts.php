@@ -2,7 +2,7 @@
 
 namespace App\Modules\Catalog\Application\Queries;
 
-use App\Modules\Catalog\Application\Queries\Contracts\ProductReadRepository;
+use App\Modules\Catalog\Application\Contracts\ProductReadRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 final class ListPublishedProducts
 {
